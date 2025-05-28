@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Фліпбук</title>
+    <style>
+        body { background: #ccc; display: flex; justify-content: center; padding-top: 50px; }
+        #flipbook { width: 800px; height: 600px; }
+        #flipbook .page { width: 400px; height: 600px; background: white; }
+        #flipbook img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <div id="flipbook"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/turn.min.js"></script>
+    <script>
+        for (let i = 1; i <= 172; i++) {
+            const pageNumber = String(i).padStart(3, '0'); // 001, 002, ..., 172
+            const imgPath = 'images/!!!Практикум2-page' + pageNumber + '.jpg';
+
+            const page = $('<div class="page"><img src="' + imgPath + '" /></div>');
+            $('#flipbook').append(page);
+        }
+
+        $("#flipbook").turn({
+            width: 800,
+            height: 600,
+            autoCenter: true
+        });
+    </script>
+</body>
+</html>
